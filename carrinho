@@ -1,0 +1,71 @@
+#include <SoftwareSerial.h>
+
+// Definição dos pinos para comunicação com o módulo Bluetooth
+int bluetoothTx = 9;  // Pino TX do módulo Bluetooth conectado ao RX do Arduino
+int bluetoothRx = 8;  // Pino RX do módulo Bluetooth conectado ao TX do Arduino
+
+// Inicialização do objeto para comunicação Bluetooth
+SoftwareSerial bluetooth(bluetoothRx, bluetoothTx);
+
+
+void setup() 
+{
+  // Inicialização da comunicação serial padrão (para comunicação com o computador via USB)
+  
+  // Inicialização da comunicação serial com o módulo Bluetooth
+  bluetooth.begin(9600);
+  Serial.begin(9600);
+
+  // Motor Esquerdo
+  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
+
+  // Motor Direito
+  pinMode(5, OUTPUT);
+  pinMode(4, OUTPUT);
+    // Motor Esquerdo
+
+}
+
+
+void loop() 
+{
+   if(bluetooth.available() > 0)
+   {
+	char direcao = bluetooth.read();
+      if (direcao == 98) {
+      digitalWrite(7, LOW);
+      digitalWrite(6, LOW);
+      digitalWrite(5, LOW);
+      digitalWrite(4, LOW);
+    }
+    // Condicional para tras
+    if (direcao == 115) {
+      digitalWrite(7, HIGH);
+      digitalWrite(6, LOW);
+      digitalWrite(5, LOW);
+      digitalWrite(4, HIGH);
+    }
+    // Condicional para frente
+    if (direcao == 119) {
+      digitalWrite(7, LOW);
+      digitalWrite(6, HIGH);
+      digitalWrite(5, HIGH);
+      digitalWrite(4, LOW);
+    }
+    // Condicional para direita
+    if (direcao == 97) {
+      digitalWrite(7, LOW);
+      digitalWrite(6, HIGH);
+      digitalWrite(5, LOW);
+      digitalWrite(4, LOW);
+    }
+    // Condicional para a esquerda
+    if (direcao == 100) {
+      digitalWrite(7, LOW);
+      digitalWrite(6, LOW);
+      digitalWrite(5, HIGH);
+      digitalWrite(4, LOW);
+    }
+   }
+}

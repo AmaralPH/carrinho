@@ -40,16 +40,16 @@ void loop()
       digitalWrite(4, LOW);
     }
     // Condicional para tras
-    if (direcao == 115) {
-      digitalWrite(7, HIGH);
-      digitalWrite(6, LOW);
+    if (direcao == 119) {
+      digitalWrite(7, LOW);
+      digitalWrite(6, HIGH);
       digitalWrite(5, LOW);
       digitalWrite(4, HIGH);
     }
     // Condicional para frente
-    if (direcao == 119) {
-      digitalWrite(7, LOW);
-      digitalWrite(6, HIGH);
+    if (direcao == 115) {
+      digitalWrite(7, HIGH);
+      digitalWrite(6, LOW);
       digitalWrite(5, HIGH);
       digitalWrite(4, LOW);
     }
@@ -64,8 +64,8 @@ void loop()
     if (direcao == 100) {
       digitalWrite(7, LOW);
       digitalWrite(6, LOW);
-      digitalWrite(5, HIGH);
-      digitalWrite(4, LOW);
+      digitalWrite(5, LOW);
+      digitalWrite(4, HIGH);
     }
    }
 }
